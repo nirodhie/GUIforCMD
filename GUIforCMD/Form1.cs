@@ -18,17 +18,30 @@ namespace GUIforCMD
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
-
-            
-           label1.Text = RunPowerShellScript("GetIP.ps1");
-           label2.Text = RunPowerShellScript("WindowsInstallDate.ps1");
-           label6.Text = RunPowerShellScript("upTime.ps1");
-           label8.Text = RunPowerShellScript("HDDcapacity.ps1");
-
+            Splash form2 = new Splash();
+            form2.Show();
+            label8.Text = RunPowerShellScript("HDDcapacity.ps1");
+            form2.progressBar1.Value = 15;
+            label1.Text = RunPowerShellScript("GetIP.ps1");
+            form2.progressBar1.Value = 30;
+            label10.Text = RunPowerShellScript("WindowsInstallDate.ps1");
+            form2.progressBar1.Value = 45;
+            label12.Text = RunPowerShellScript("upTime.ps1");
+            form2.progressBar1.Value = 60;
+            label3.Text = RunPowerShellScript("InstalledRAM.ps1");
+            form2.progressBar1.Value = 75;
+            label13.Text = RunPowerShellScript("battery.ps1");
+            form2.progressBar1.Value = 95;
+            label6.Text  =  RunPowerShellScript("BasicInfo.ps1");
+            //progressbar działa tylko dlatego że w designerze modifiers ustawione są jako public
+            form2.Close();
 
         }
+
+        
+
 
         public string RunPowerShellScript(string scriptName)
         {
@@ -47,7 +60,34 @@ namespace GUIforCMD
             return wynik.Trim();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+
+        private void label10_Click(object sender, EventArgs e)
         {
 
         }
