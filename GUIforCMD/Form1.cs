@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,19 +23,25 @@ namespace GUIforCMD
         {
             Splash form2 = new Splash();
             form2.Show();
-            label8.Text = RunPowerShellScript("HDDcapacity.ps1");
-            form2.progressBar1.Value = 15;
+
+            
+
+
+
+            form2.progressBar1.Value = 20;
             label1.Text = RunPowerShellScript("GetIP.ps1");
-            form2.progressBar1.Value = 30;
+            form2.progressBar1.Value = 40;
             label10.Text = RunPowerShellScript("WindowsInstallDate.ps1");
-            form2.progressBar1.Value = 45;
-            label12.Text = RunPowerShellScript("upTime.ps1");
             form2.progressBar1.Value = 60;
+            label12.Text = RunPowerShellScript("upTime.ps1");
+            form2.progressBar1.Value = 80;
             label3.Text = RunPowerShellScript("InstalledRAM.ps1");
-            form2.progressBar1.Value = 75;
+            form2.progressBar1.Value = 99;
+            label8.Text = RunPowerShellScript("HDDcapacity.ps1");
             label13.Text = RunPowerShellScript("battery.ps1");
-            form2.progressBar1.Value = 95;
+            
             label6.Text  =  RunPowerShellScript("BasicInfo.ps1");
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
             //progressbar działa tylko dlatego że w designerze modifiers ustawione są jako public
             form2.Close();
 
