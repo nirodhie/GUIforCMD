@@ -1,0 +1,1 @@
+﻿(Test-Connection -ComputerName $env:ComputerName -Count 1).IPV4Address.IPAddressToString
