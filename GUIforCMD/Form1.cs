@@ -29,19 +29,20 @@ namespace GUIforCMD
 
 
             form2.progressBar1.Value = 20;
-            label1.Text = RunPowerShellScript("GetIP.ps1");
+            label1.Text = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\GetIP.ps1");
             form2.progressBar1.Value = 40;
-            label10.Text = RunPowerShellScript("WindowsInstallDate.ps1");
+            label10.Text = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\WindowsInstallDate.ps1");
             form2.progressBar1.Value = 60;
-            label12.Text = RunPowerShellScript("upTime.ps1");
+            label12.Text = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\upTime.ps1");
             form2.progressBar1.Value = 80;
-            label3.Text = RunPowerShellScript("InstalledRAM.ps1");
+            label3.Text = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\InstalledRAM.ps1");
             form2.progressBar1.Value = 99;
-            label8.Text = RunPowerShellScript("HDDcapacity.ps1");
-            label13.Text = RunPowerShellScript("battery.ps1");
+            label8.Text = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\HDDcapacity.ps1");
+            label13.Text = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\battery.ps1");
             
-            label6.Text  =  RunPowerShellScript("BasicInfo.ps1");
-            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(3));
+            label6.Text  =  RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\BasicInfo.ps1");
+            label2.Text  = RunPowerShellScript(@"\\dtpolbn7001\oss$\userScripts\SystemInformation\MonitorInfo.ps1");
+            
             //progressbar działa tylko dlatego że w designerze modifiers ustawione są jako public
             form2.Close();
 
@@ -56,10 +57,9 @@ namespace GUIforCMD
             proces_uruchamiajacy_komende.StartInfo.UseShellExecute = false;
             proces_uruchamiajacy_komende.StartInfo.CreateNoWindow = true;
             proces_uruchamiajacy_komende.StartInfo.RedirectStandardOutput = true;
-            proces_uruchamiajacy_komende.StartInfo.FileName = "RunPowershell.bat";
-            proces_uruchamiajacy_komende.StartInfo.Arguments = scriptName;
+            proces_uruchamiajacy_komende.StartInfo.FileName = @"Powershell.exe";
+            proces_uruchamiajacy_komende.StartInfo.Arguments = " -executionpolicy remotesigned -file " + scriptName;
             proces_uruchamiajacy_komende.Start();
-            //proces_uruchamiajacy_komende.WaitForExit();
             proces_uruchamiajacy_komende.WaitForExit();
 
             var wynik = proces_uruchamiajacy_komende.StandardOutput.ReadToEnd();
